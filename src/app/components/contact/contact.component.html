@@ -50,59 +50,95 @@
       
       <div class="contact-form-container">
         <h3 class="form-title">Send a Message</h3>
-        <form class="contact-form" (ngSubmit)="submitForm()">
+        
+        <!-- Success message -->
+        <div *ngIf="formSubmitted" class="success-message">
+          <i class="icon">✓</i>
+          <span>Your message has been sent successfully! I'll get back to you soon.</span>
+        </div>
+        
+        <form class="contact-form" (ngSubmit)="submitForm()" #contactForm="ngForm">
           <div class="form-group">
-            <label for="name">Name</label>
+            <label for="name" class="form-label">Full Name</label>
             <input 
               type="text" 
               id="name" 
               name="name" 
+              class="form-control" 
               [(ngModel)]="formData.name" 
+              #nameInput="ngModel"
               required 
-              placeholder="Your Name"
+              placeholder="John Doe"
             >
+            <div class="error-message" *ngIf="nameInput.invalid && nameInput.touched">
+              Please enter your name
+            </div>
           </div>
           
           <div class="form-group">
-            <label for="email">Email</label>
+            <label for="email" class="form-label">Email Address</label>
             <input 
               type="email" 
               id="email" 
               name="email" 
+              class="form-control" 
               [(ngModel)]="formData.email" 
-              required 
-              placeholder="Your Email"
+              #emailInput="ngModel"
+              required
+              email
+              placeholder="john@example.com"
             >
+            <div class="error-message" *ngIf="emailInput.invalid && emailInput.touched">
+              Please enter a valid email address
+            </div>
           </div>
           
-          <div class="form-group">
-            <label for="subject">Subject</label>
+          <div class="form-group full-width">
+            <label for="subject" class="form-label">Subject</label>
             <input 
               type="text" 
               id="subject" 
               name="subject" 
+              class="form-control" 
               [(ngModel)]="formData.subject" 
+              #subjectInput="ngModel"
               required 
-              placeholder="Subject"
+              placeholder="What is this regarding?"
             >
+            <div class="error-message" *ngIf="subjectInput.invalid && subjectInput.touched">
+              Please enter a subject
+            </div>
           </div>
           
-          <div class="form-group">
-            <label for="message">Message</label>
+          <div class="form-group full-width">
+            <label for="message" class="form-label">Message</label>
             <textarea 
               id="message" 
               name="message" 
+              class="form-control" 
               [(ngModel)]="formData.message" 
+              #messageInput="ngModel"
               required 
               rows="5" 
-              placeholder="Your Message"
+              placeholder="Your message here..."
             ></textarea>
+            <div class="error-message" *ngIf="messageInput.invalid && messageInput.touched">
+              Please enter your message
+            </div>
           </div>
           
-          <button type="submit" class="btn btn-primary">Send Message</button>
+          <!-- Simplified button container -->
+          <div class="form-group full-width submit-btn-container">
+            <button 
+              type="submit" 
+              class="btn btn-primary"
+              [disabled]="contactForm.invalid">
+              <i class="icon">✉</i>
+              Send Message
+            </button>
+          </div>
         </form>
       </div>
     </div>
   </div>
 </section>
-
