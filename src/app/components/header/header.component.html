@@ -1,0 +1,31 @@
+<header class="header" [class.scrolled]="isScrolled">
+  <div class="container">
+    <div class="logo">
+      <a (click)="scrollToSection('home')" class="logo-link">Portfolio</a>
+    </div>
+    <nav class="nav" [class.nav-open]="isMenuOpen">
+      <ul class="nav-list">
+        @for (item of navItems; track item.id) {
+          <li class="nav-item">
+            <a 
+              (click)="scrollToSection(item.id)"
+              class="nav-link"
+              [class.active]="activeSection === item.id"
+            >
+              {{item.label}}
+            </a>
+          </li>
+        }
+      </ul>
+    </nav>
+    <button 
+      class="mobile-nav-toggle" 
+      (click)="toggleMenu()"
+      [class.active]="isMenuOpen"
+      aria-label="Toggle navigation menu"
+    >
+      <span class="hamburger"></span>
+    </button>
+  </div>
+</header>
+

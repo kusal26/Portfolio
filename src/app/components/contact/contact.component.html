@@ -1,0 +1,108 @@
+<section id="contact" class="contact">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">{{contactData.title}}</h2>
+      <p class="section-subtitle">{{contactData.subtitle}}</p>
+    </div>
+    
+    <div class="contact-content">
+      <div class="contact-info">
+        <h3 class="contact-info-title">Contact Information</h3>
+        
+        <div class="info-item">
+          <div class="info-icon">
+            <i class="icon">✉</i>
+          </div>
+          <div class="info-details">
+            <h4>Email</h4>
+            <a href="mailto:{{contactData.email}}" class="info-link">{{contactData.email}}</a>
+          </div>
+        </div>
+        
+        <div class="info-item">
+          <div class="info-icon">
+            <i class="icon">☎</i>
+          </div>
+          <div class="info-details">
+            <h4>Phone</h4>
+            <a href="tel:{{contactData.phone}}" class="info-link">{{contactData.phone}}</a>
+          </div>
+        </div>
+        
+        <div class="info-item">
+          <div class="info-icon">
+            <i class="icon">📍</i>
+          </div>
+          <div class="info-details">
+            <h4>Location</h4>
+            <p>{{contactData.location}}</p>
+          </div>
+        </div>
+        
+        <div class="social-links">
+          @for (link of contactData.socialLinks; track link.name) {
+            <a [href]="link.url" class="social-link" target="_blank" rel="noopener">
+              <span class="social-icon">{{link.icon.charAt(0).toUpperCase()}}</span>
+            </a>
+          }
+        </div>
+      </div>
+      
+      <div class="contact-form-container">
+        <h3 class="form-title">Send a Message</h3>
+        <form class="contact-form" (ngSubmit)="submitForm()">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input 
+              type="text" 
+              id="name" 
+              name="name" 
+              [(ngModel)]="formData.name" 
+              required 
+              placeholder="Your Name"
+            >
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              [(ngModel)]="formData.email" 
+              required 
+              placeholder="Your Email"
+            >
+          </div>
+          
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input 
+              type="text" 
+              id="subject" 
+              name="subject" 
+              [(ngModel)]="formData.subject" 
+              required 
+              placeholder="Subject"
+            >
+          </div>
+          
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea 
+              id="message" 
+              name="message" 
+              [(ngModel)]="formData.message" 
+              required 
+              rows="5" 
+              placeholder="Your Message"
+            ></textarea>
+          </div>
+          
+          <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+

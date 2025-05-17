@@ -1,0 +1,41 @@
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+.main-content {
+  margin-top: var(--header-height, 80px);
+  min-height: calc(100vh - var(--header-height, 80px));
+  overflow-x: hidden;
+}
+
+:host ::ng-deep section {
+  padding: 6rem 0;
+}
+
+@media (max-width: 768px) {
+  :host ::ng-deep section {
+    padding: 4rem 0;
+  }
+}
+
+:root {
+  scroll-behavior: smooth;
+}
+
+.main-content {
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+section {
+  padding: 6rem 0;
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 4rem 0;
+  }
+}
+

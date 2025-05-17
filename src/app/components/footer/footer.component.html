@@ -1,0 +1,52 @@
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-info">
+        <div class="footer-logo">
+          <a (click)="scrollToSection('home')" class="logo-link" style="cursor: pointer">Portfolio</a>
+        </div>
+        <p class="footer-text">A professional portfolio showcasing skills, projects, and experience.</p>
+        <div class="social-links">
+          @for (link of footerData.socialLinks; track link.name) {
+            <a [href]="link.url" class="social-link" target="_blank" rel="noopener" [attr.aria-label]="link.name">
+              <span class="social-icon">{{link.icon.charAt(0).toUpperCase()}}</span>
+            </a>
+          }
+        </div>
+      </div>
+      
+      <div class="footer-links">
+        <h3 class="footer-heading">Quick Links</h3>
+        <ul class="link-list">
+          @for (link of footerData.links; track link.label) {
+            <li class="link-item">
+              <a (click)="scrollToSection(link.id)" class="footer-link" style="cursor: pointer">{{link.label}}</a>
+            </li>
+          }
+        </ul>
+      </div>
+      
+      <div class="footer-contact">
+        <h3 class="footer-heading">Contact</h3>
+        <p class="contact-item">
+          <span class="contact-icon">✉</span>
+          <a href="mailto:your.email&#64;example.com" class="contact-link">your.email&#64;example.com</a>
+        </p>
+        <p class="contact-item">
+          <span class="contact-icon">☎</span>
+          <a href="tel:+11234567890" class="contact-link">+1 (123) 456-7890</a>
+        </p>
+        <p class="contact-item">
+          <span class="contact-icon">📍</span>
+          <span>City, Country</span>
+        </p>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p class="copyright">© {{currentYear}} {{footerData.name}}. All Rights Reserved.</p>
+      <p class="made-with">Made with Angular</p>
+    </div>
+  </div>
+</footer>
+
