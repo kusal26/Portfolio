@@ -13,32 +13,39 @@ export class SkillsComponent {
     subtitle: 'Technologies I work with',
     categories: [
       {
-        name: 'Frontend Development',
+        name: 'Backend Development',
         skills: [
-          { name: 'HTML5', level: 90 },
-          { name: 'CSS3', level: 85 },
-          { name: 'JavaScript', level: 88 },
-          { name: 'TypeScript', level: 80 },
-          { name: 'Angular', level: 85 },
-          { name: 'React', level: 75 }
+          { name: '.NET Core', level: 85 },
+          { name: 'C#', level: 85 },
+          { name: 'ASP.NET MVC', level: 85 },
+          { name: 'Web API', level: 80 },
+          { name: 'Entity Framework', level: 80 }
         ]
       },
       {
-        name: 'Backend Development',
+        name: 'Databases',
         skills: [
-          { name: 'Node.js', level: 75 },
-          { name: 'Express', level: 70 },
-          { name: '.NET Core', level: 65 },
-          { name: 'SQL', level: 80 }
+          { name: 'SQL Server', level: 85 },
+          { name: 'MongoDB', level: 75 },
+          { name: 'Database Design', level: 80 }
+        ]
+      },
+      {
+        name: 'Frontend Development',
+        skills: [
+          { name: 'HTML/CSS', level: 80 },
+          { name: 'JavaScript', level: 75 },
+          { name: 'jQuery', level: 80 },
+          { name: 'Angular', level: 60 }
         ]
       },
       {
         name: 'Tools & Others',
         skills: [
-          { name: 'Git', level: 85 },
-          { name: 'Docker', level: 60 },
-          { name: 'Figma', level: 65 },
-          { name: 'Responsive Design', level: 90 }
+          { name: 'Git', level: 80 },
+          { name: 'Visual Studio', level: 85 },
+          { name: 'Azure DevOps', level: 70 },
+          { name: 'RESTful APIs', level: 80 }
         ]
       }
     ]

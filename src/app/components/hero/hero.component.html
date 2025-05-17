@@ -6,8 +6,8 @@
       <h2 class="title">{{title}}</h2>
       <p class="description">{{description}}</p>
       <div class="hero-buttons">
-        <a routerLink="/contact" class="btn btn-primary">Get in Touch</a>
-        <a routerLink="/projects" class="btn btn-outline">View My Work</a>
+        <a (click)="scrollToSection('contact')" class="btn btn-primary">Get in Touch</a>
+        <a (click)="scrollToSection('projects')" class="btn btn-outline">View My Work</a>
       </div>
     </div>
     <div class="hero-image">
