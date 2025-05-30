@@ -31,9 +31,21 @@ export class FooterComponent {
       { label: 'Contact', id: 'contact' }
     ],
     socialLinks: [
-      { name: 'LinkedIn', url: 'https://linkedin.com/in/yourprofile', icon: 'linkedin' },
-      { name: 'GitHub', url: 'https://github.com/yourusername', icon: 'github' },
-      { name: 'Twitter', url: 'https://twitter.com/yourhandle', icon: 'twitter' }
+      { 
+        name: 'LinkedIn', 
+        url: 'https://linkedin.com/in/yourprofile', 
+        icon: 'fab fa-linkedin-in' 
+      },
+      { 
+        name: 'GitHub', 
+        url: 'https://github.com/yourusername', 
+        icon: 'fab fa-github' 
+      },
+      { 
+        name: 'Twitter', 
+        url: 'https://twitter.com/yourhandle', 
+        icon: 'fab fa-x-twitter' 
+      }
     ]
   };
   

@@ -8,8 +8,8 @@
         <p class="footer-text">A professional portfolio showcasing skills, projects, and experience.</p>
         <div class="social-links">
           @for (link of footerData.socialLinks; track link.name) {
-            <a [href]="link.url" class="social-link" target="_blank" rel="noopener" [attr.aria-label]="link.name">
-              <span class="social-icon">{{link.icon.charAt(0).toUpperCase()}}</span>
+            <a [href]="link.url" class="social-link" target="_blank" rel="noopener" [title]="link.name">
+              <i [class]="link.icon"></i>
             </a>
           }
         </div>

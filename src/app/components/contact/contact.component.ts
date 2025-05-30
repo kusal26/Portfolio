@@ -18,9 +18,21 @@ export class ContactComponent {
     location: 'Kathmandu, Nepal',
     description: 'I am always open to discussing new projects, creative ideas or opportunities to be part of your visions.',
     socialLinks: [
-      { name: 'LinkedIn', url: 'https://www.linkedin.com/in/kushal-thapa-b06710182/', icon: 'linkedin' },
-      { name: 'GitHub', url: 'https://github.com/kusal26', icon: 'github' },
-      { name: 'Twitter', url: 'https://x.com/Kusalth61169052', icon: 'twitter' }
+      { 
+        name: 'LinkedIn', 
+        url: 'https://www.linkedin.com/in/kushal-thapa-b06710182/', 
+        icon: 'fab fa-linkedin-in' 
+      },
+      { 
+        name: 'GitHub', 
+        url: 'https://github.com/kusal26', 
+        icon: 'fab fa-github' 
+      },
+      { 
+        name: 'Twitter', 
+        url: 'https://x.com/Kusalth61169052', 
+        icon: 'fab fa-x-twitter' 
+      }
     ]
   };
 
@@ -32,24 +44,29 @@ export class ContactComponent {
   };
   
   formSubmitted = false;
+  isSubmitting = false;
   @ViewChild('contactForm') contactForm!: NgForm;
 
-  // Simpler form submission function
   submitForm() {
-    if (this.contactForm.valid) {
-      console.log('Form submitted!', this.formData);
+    if (this.contactForm.valid && !this.isSubmitting) {
+      this.isSubmitting = true;
       
-      // Show success message
-      this.formSubmitted = true;
-      
-      // Reset form after a delay
+      // Simulate API call
       setTimeout(() => {
-        this.resetForm();
-      }, 500);
+        console.log('Form submitted!', this.formData);
+        
+        // Show success message
+        this.formSubmitted = true;
+        this.isSubmitting = false;
+        
+        // Reset form after a delay
+        setTimeout(() => {
+          this.resetForm();
+        }, 3000); // Give user time to see success state
+      }, 1000); // Simulate network delay
     }
   }
   
-  // Separate function to reset the form
   resetForm() {
     this.formData = {
       name: '',
@@ -73,5 +90,10 @@ export class ContactComponent {
     if (this.formSubmitted) {
       this.formSubmitted = false;
     }
+  }
+
+  // Handle input changes to clear success message
+  onInputChange() {
+    this.clearSuccessMessage();
   }
 }

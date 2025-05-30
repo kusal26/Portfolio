@@ -41,8 +41,8 @@
         
         <div class="social-links">
           @for (link of contactData.socialLinks; track link.name) {
-            <a [href]="link.url" class="social-link" target="_blank" rel="noopener">
-              <span class="social-icon">{{link.icon.charAt(0).toUpperCase()}}</span>
+            <a [href]="link.url" class="social-link" target="_blank" rel="noopener" [title]="link.name">
+              <i [class]="link.icon"></i>
             </a>
           }
         </div>
@@ -57,7 +57,7 @@
           <span>Your message has been sent successfully! I'll get back to you soon.</span>
         </div>
         
-        <form class="contact-form" (ngSubmit)="submitForm()" #contactForm="ngForm">
+        <form class="contact-form" (ngSubmit)="submitForm()" #contactForm="ngForm" (input)="onInputChange()">
           <div class="form-group">
             <label for="name" class="form-label">Full Name</label>
             <input 
@@ -127,14 +127,23 @@
             </div>
           </div>
           
-          <!-- Simplified button container -->
+          <!-- Updated button container with loading and success states -->
           <div class="form-group full-width submit-btn-container">
             <button 
               type="submit" 
               class="btn btn-primary"
-              [disabled]="contactForm.invalid">
-              <i class="icon">✉</i>
-              Send Message
+              [disabled]="contactForm.invalid || isSubmitting">
+              <span class="btn-content" *ngIf="!isSubmitting && !formSubmitted">
+                <i class="icon">✉</i>
+                Send Message
+              </span>
+              <span class="btn-loading-spinner" *ngIf="isSubmitting">
+                <i class="spinner"></i>
+              </span>
+              <span class="btn-success-content" *ngIf="formSubmitted">
+                <i class="icon">✓</i>
+                Message Sent!
+              </span>
             </button>
           </div>
         </form>
