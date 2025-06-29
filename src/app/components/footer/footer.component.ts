@@ -22,7 +22,7 @@ interface SocialLink {
 export class FooterComponent {
   currentYear = new Date().getFullYear();
   footerData = {
-    name: 'Your Name',
+    name: 'Kushal Thapa',
     links: [
       { label: 'Home', id: 'home' },
       { label: 'About', id: 'about' },
@@ -33,17 +33,17 @@ export class FooterComponent {
     socialLinks: [
       { 
         name: 'LinkedIn', 
-        url: 'https://linkedin.com/in/yourprofile', 
+        url: 'https://www.linkedin.com/in/kushal-thapa-b06710182/', 
         icon: 'fab fa-linkedin-in' 
       },
       { 
         name: 'GitHub', 
-        url: 'https://github.com/yourusername', 
+        url: 'https://github.com/kusal26', 
         icon: 'fab fa-github' 
       },
       { 
         name: 'Twitter', 
-        url: 'https://twitter.com/yourhandle', 
+        url: 'https://twitter.com/#', 
         icon: 'fab fa-x-twitter' 
       }
     ]
