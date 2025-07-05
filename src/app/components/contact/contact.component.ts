@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-contact',
@@ -10,6 +11,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './contact.component.css'
 })
 export class ContactComponent {
+  constructor(private http: HttpClient) {}
   contactData = {
     title: 'Get In Touch',
     subtitle: 'Feel free to reach out - I\'d love to hear from you!',
@@ -47,25 +49,37 @@ export class ContactComponent {
   isSubmitting = false;
   @ViewChild('contactForm') contactForm!: NgForm;
 
-  submitForm() {
-    if (this.contactForm.valid && !this.isSubmitting) {
-      this.isSubmitting = true;
-      
-      // Simulate API call
-      setTimeout(() => {
-        console.log('Form submitted!', this.formData);
-        
-        // Show success message
+ submitForm() {
+  if (this.contactForm.valid && !this.isSubmitting) {
+    this.isSubmitting = true;
+
+    const endpoint = 'https://formspree.io/f/xjkrlwzj'; // your actual Formspree endpoint
+    const headers = new HttpHeaders({ 'Accept': 'application/json' });
+
+    const payload = {
+      name: this.formData.name,
+      email: this.formData.email,
+      subject: this.formData.subject,
+      message: this.formData.message
+    };
+
+    this.http.post(endpoint, payload, { headers }).subscribe({
+      next: () => {
+        console.log('Form submitted to Formspree!', payload);
         this.formSubmitted = true;
         this.isSubmitting = false;
-        
-        // Reset form after a delay
-        setTimeout(() => {
-          this.resetForm();
-        }, 3000); // Give user time to see success state
-      }, 1000); // Simulate network delay
-    }
+
+        // Reset form after short delay
+        setTimeout(() => this.resetForm(), 3000);
+      },
+      error: () => {
+        this.isSubmitting = false;
+        alert('❌ Failed to send message. Please try again later.');
+      }
+    });
   }
+}
+
   
   resetForm() {
     this.formData = {
